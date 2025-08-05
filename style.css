@@ -1,0 +1,51 @@
+body {
+    background-color: #7c3f58;
+    
+    display: flex;
+}
+
+.menu {
+    width: 200px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+button {
+    width: 150px;
+    height: 50px;
+    background-color: #f9a875;
+    color: #7c3f58;
+    border: 2px solid #fff6d3;
+    border-radius: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+}
+
+.container {
+    width: 350px;
+    height: 350px;
+    border: 2px solid #f9a875;
+    background-color: #fff6d3;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.container .row {
+    flex: auto;
+    
+    display: flex;
+}
+
+.row .cell {
+    flex: auto;
+    background-color: #fff6d3;
+}
+
+.cell.colored {
+    background-color: #eb6b6f;
+}
