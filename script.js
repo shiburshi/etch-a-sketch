@@ -26,6 +26,7 @@ container = document.querySelector(".container");
 newBtn = document.querySelector("#new");
 transparentBtn = document.querySelector("#transparent");
 colorfulBtn = document.querySelector("#colorful");
+eraserBtn = document.querySelector("#eraser");
 
 document.addEventListener("click", (e) => {
     if (e.target === newBtn) {
@@ -36,26 +37,46 @@ document.addEventListener("click", (e) => {
     }
     if (e.target === transparentBtn){
         transparentBtn.classList.toggle("pressed");
+        if (transparentBtn.classList.contains("pressed")) {
+            eraserBtn.classList.remove("pressed");
+        }
     }
     if (e.target === colorfulBtn){
         colorfulBtn.classList.toggle("pressed");
+        if (colorfulBtn.classList.contains("pressed")) {
+            eraserBtn.classList.remove("pressed");
+        }
+    }
+    if (e.target === eraserBtn){
+        eraserBtn.classList.toggle("pressed");
+        if (eraserBtn.classList.contains("pressed")) {
+            transparentBtn.classList.remove("pressed");
+            colorfulBtn.classList.remove("pressed");
+        }
     }
 })
 
 document.addEventListener("mouseover", (e) => {
     if (e.target.classList.contains("cell")) {
-        //colorful mode
-        if (colorfulBtn.classList.contains("pressed")) {
-            if (!e.target.classList.contains("colored")) {
-                e.target.style.backgroundColor = getRandomColor();
-            };
-        }
-        //classic mode + transparency
-        e.target.classList.add("colored");
-        if (transparentBtn.classList.contains("pressed")) {
-            e.target.style.opacity = +window.getComputedStyle(e.target).getPropertyValue("opacity") + 0.1;
+        
+        //eraser mode
+        if (eraserBtn.classList.contains("pressed")) {
+            e.target.classList.remove("colored");
+            e.target.removeAttribute('style');
         } else {
-            e.target.style.opacity = 1;
+            //colorful mode
+            if (colorfulBtn.classList.contains("pressed")) {
+                if (!e.target.classList.contains("colored")) {
+                    e.target.style.backgroundColor = getRandomColor();
+                };
+            }
+            //classic mode + transparency
+            e.target.classList.add("colored");
+            if (transparentBtn.classList.contains("pressed")) {
+                e.target.style.opacity = +window.getComputedStyle(e.target).getPropertyValue("opacity") + 0.1;
+            } else {
+                e.target.style.opacity = 1;
+            }
         }
     }
 });
