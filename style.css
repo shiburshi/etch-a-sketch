@@ -1,5 +1,6 @@
 body {
     background-color: #7c3f58;
+    font-family: 'Courier New', Courier, monospace;
     
     display: flex;
 }
@@ -21,8 +22,19 @@ button {
     color: #7c3f58;
     border: 2px solid #fff6d3;
     border-radius: 10px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: inherit;
     font-size: 15px;
+}
+
+button.pressed {
+    background-color: #fff6d3;
+    border-color: #f9a875;
+    color: #f9a875;
+}
+
+h2 {
+    font-size: 18px;
+    color: #fff6d3;
 }
 
 .container {
@@ -48,4 +60,5 @@ button {
 
 .cell.colored {
     background-color: #eb6b6f;
+    opacity: 0;
 }

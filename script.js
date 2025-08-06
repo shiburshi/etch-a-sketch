@@ -17,6 +17,7 @@ function removeGrid() {
 
 container = document.querySelector(".container");
 newBtn = document.querySelector("#new");
+transparentBtn = document.querySelector("#transparent");
 
 document.addEventListener("click", (e) => {
     if (e.target === newBtn) {
@@ -25,11 +26,19 @@ document.addEventListener("click", (e) => {
         removeGrid();
         createGrid(gridSize);
     }
+    if (e.target === transparentBtn){
+        transparentBtn.classList.toggle("pressed");
+    }
 })
 
 document.addEventListener("mouseover", (e) => {
     if (e.target.classList.contains("cell")) {
         e.target.classList.add("colored");
+        if (transparentBtn.classList.contains("pressed")) {
+            e.target.style.opacity = +window.getComputedStyle(e.target).getPropertyValue("opacity") + 0.1;
+        } else {
+            e.target.style.opacity = 1;
+        }
     }
 });
 
