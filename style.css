@@ -1,8 +1,12 @@
 body {
     background-color: #7c3f58;
     font-family: 'Courier New', Courier, monospace;
+    min-height: 100vh;
     
     display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu {
@@ -42,6 +46,7 @@ h2 {
     height: 350px;
     border: 2px solid #f9a875;
     background-color: #fff6d3;
+    flex: none;
 
     display: flex;
     flex-direction: column;
